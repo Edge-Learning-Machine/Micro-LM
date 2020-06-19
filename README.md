@@ -1,8 +1,8 @@
-# Desk-LM
+# Micro-LM
 A plain C library for machine learning on edge devices
 
 
-Micro-ML is a plain C library for machine learning on edge devices (it can be used also on desktops). It currently implements the following ML algorithms:
+Micro-LM is a plain C library for machine learning on edge devices (it can be used also on desktops). It currently implements the following ML algorithms:
 
 - `Linear SVM`
 - `Decision Tree`
