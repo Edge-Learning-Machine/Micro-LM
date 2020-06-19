@@ -26,13 +26,13 @@ You can compile the code as an executable or as a static library, using gcc/g++ 
 
 The Micro-LM files need to be compiled together with the .c and .h files produced by [Desk-LM](https://github.com/Edge-Learning-Machine/Desk-LM).
 
-The program must be configured in ELM.h, where the user has to specify some '<#define>', such as:
-- The algorithm: SVM or DT or KNN
-- DS_TEST, if you want to test performance in a dataset, instead of doing one shot estimations
-- REGRESSION, if you want to perform a regression. Default is classification (no regression)
+The program must be configured in ELM.h, where the user has to specify some `#define`, such as:
+- The algorithm: `SVM` or `DT` or `KNN`
+- `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations
+- `REGRESSION`, if you want to perform a regression. Default is classification (no regression)
 
 ELM.h exposes the following functions:
-- *preprocess(X)*, where X is the sample vector
-- *algo_classification(X)*, where X is the sample vector. algo is knn, decisionTree, svm
-- *algo_classification(X)*, where X is the sample vector. algo is knn, decisionTree, svm
-- *algo_test_dataset(isRegression)*, for (whole or minimal) dataset testing. algo is knn, decisionTree, svm
+- *`preprocess(X)`*, where X is the sample vector
+- *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
+- *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
+- *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. algo is knn, decisionTree, svm
