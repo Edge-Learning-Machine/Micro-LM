@@ -15,10 +15,6 @@ At present, the library is optimized for memory footprint. [`Desk-LM`](https://g
 
 We are currently working to provide dynamic configurability to all the algorithms.
 
-## Reference article for more infomation
-F., Sakr, F., Bellotti, R., Berta, A., De Gloria, "Machine Learning on Mainstream Microcontrollers," Sensors 2020, 20, 2638.
-https://www.mdpi.com/1424-8220/20/9/2638
-
 ## Usage
 
 You can compile the code as an executable or as a static library, using gcc/g++ for a Microcontroller or a desktop (e.g., thorugh Eclipse CDT or Visual Studio Code).
@@ -35,3 +31,7 @@ The program must be configured in `ELM.h`, where the user has to specify some `#
 - *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
 - *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
 - *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. algo is knn, decisionTree, svm
+
+## Reference article for more infomation
+F., Sakr, F., Bellotti, R., Berta, A., De Gloria, "Machine Learning on Mainstream Microcontrollers," Sensors 2020, 20, 2638.
+https://www.mdpi.com/1424-8220/20/9/2638
