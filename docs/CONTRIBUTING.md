@@ -14,13 +14,13 @@
 
 #### **Do you intend to add a new feature or change an existing one?**
 
-* Suggest your change writing to franz@elios.unige.it and start writing code.
+* Suggest your change writing to franz at elios.unige.it and start writing code.
 
 * Do not open an issue on GitHub until you have collected positive feedback about the change. GitHub issues are primarily intended for bug reports and fixes.
 
 #### **Do you have questions about the source code?**
 
-* Ask any question about how to use ELM to franz@elios.unige.it.
+* Ask any question about how to use ELM to franz at elios.unige.it.
 
 Thank you!
 
