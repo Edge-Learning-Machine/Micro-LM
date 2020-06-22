@@ -1,0 +1,9 @@
+*.exe
+cfg/
+.vscode/
+energydata_complete/
+*.rar
+source/
+heart/
+Debug/
+dlm/
