@@ -29,7 +29,7 @@ The program must be configured in `ELM.h`, where the user has to specify some `#
 `ELM.h` exposes the following functions:
 - *`preprocess(X)`*, where X is the sample vector
 - *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
-- *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
+- *`algo_regression(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
 - *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. algo is knn, decisionTree, svm
 
 ## Data type
