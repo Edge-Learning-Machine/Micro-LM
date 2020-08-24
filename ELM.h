@@ -9,7 +9,7 @@
 #define SVM
 //#define DT
 //#define KNN
-//#define TES
+//#define TES //Holt-Winters Triple exponential smoothing
 
 //If it is a whole dataset performance analysis. Otherwise it is one shot
 //#define DS_TEST
