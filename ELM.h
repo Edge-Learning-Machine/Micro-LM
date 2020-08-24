@@ -9,6 +9,7 @@
 #define SVM
 //#define DT
 //#define KNN
+//#define TES
 
 //If it is a whole dataset performance analysis. Otherwise it is one shot
 //#define DS_TEST
@@ -34,6 +35,12 @@ int decisionTree_classification(float[]);
 void knn_test_dataset(bool);
 float knn_regression(float[]);
 int knn_classification(float[]);
+#endif
+
+#ifdef TES
+#include "TripleES_params.h"
+int* HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta,
+		            double gamma,int slen, int n_preds, double scaling_factor);
 #endif
 
 #endif
