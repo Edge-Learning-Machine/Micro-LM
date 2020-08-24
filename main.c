@@ -62,7 +62,7 @@ int main(){
     #endif
     #endif
 				
-				#ifdef TES
+				#ifdef TripleES
     #include "TripleES_params.h"
 				//Holt-Winters model coefficients
 

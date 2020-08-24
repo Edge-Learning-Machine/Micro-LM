@@ -9,7 +9,7 @@
 #define SVM
 //#define DT
 //#define KNN
-//#define TES //Holt-Winters Triple exponential smoothing
+//#define TripleES //Holt-Winters Triple exponential smoothing
 
 //If it is a whole dataset performance analysis. Otherwise it is one shot
 //#define DS_TEST
@@ -37,7 +37,7 @@ float knn_regression(float[]);
 int knn_classification(float[]);
 #endif
 
-#ifdef TES
+#ifdef TripleES
 #include "TripleES_params.h"
 int* HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta,
 		            double gamma,int slen, int n_preds, double scaling_factor);
