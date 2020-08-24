@@ -14,6 +14,8 @@ We are extending the library to other algorithms, also unsupervised. Your volunt
 
 The library is optimized for memory footprint. [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM) performs model training and cross-validation, and creates .c and .h files that store the best model's parameters. These files must be compiled together with the [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository.
 
+As an alternative, we are working for a dynamic configuration of Micro-LM through .json files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
+
 ## Usage
 
 You can compile the code as an executable or as a static library, using gcc/g++ for a Microcontroller or a desktop (e.g., thorugh Eclipse CDT or Visual Studio Code).
