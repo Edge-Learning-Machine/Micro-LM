@@ -8,7 +8,7 @@ Micro-LM currently implements the following ML algorithms:
 - `K-NN`
 - `Holt-Winters Triple Exponential Smoothing` for time series
 
-Each algorithm provides both classification and regression, for binary and multiclass problems. `SVM` supports only ordinal multiclass classification.
+Each algorithm provides both classification and regression, for binary and multiclass problems. `SVM` supports only ordinal multiclass classification. `Holt-Winters Triple Exponential Smoothing` supports only regression.
 
 We are extending the library to other algorithms, also unsupervised. Your voluntary contribution is welcome.
 
