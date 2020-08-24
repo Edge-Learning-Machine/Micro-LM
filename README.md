@@ -6,7 +6,7 @@ Micro-LM currently implements the following ML algorithms:
 - `Linear SVM`
 - `Decision Tree`
 - `K-NN`
-- `Holt-Winters Triple Exponential Smoothing` for time series
+- `TripleES`, Holt-Winters Triple Exponential Smoothing for time series
 
 Each algorithm provides both classification and regression, for binary and multiclass problems. `SVM` supports only ordinal multiclass classification. `Holt-Winters Triple Exponential Smoothing` supports only regression.
 
@@ -23,7 +23,7 @@ You can compile the code as an executable or as a static library, using gcc/g++ 
 The Micro-LM files need to be compiled together with the .c and .h files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
 
 The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
-- The algorithm: `SVM`, `DT`, `KNN` or `TES`
+- The algorithm: `SVM`, `DT`, `KNN` or `TripleES`
 - `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm.
 - `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm. TES performs only regression
 
