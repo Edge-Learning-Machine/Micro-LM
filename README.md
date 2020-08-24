@@ -6,14 +6,13 @@ Micro-LM currently implements the following ML algorithms:
 - `Linear SVM`
 - `Decision Tree`
 - `K-NN`
+- `Holt-Winters Triple Exponential Smoothing` for time series
 
 Each algorithm provides both classification and regression, for binary and multiclass problems. `SVM` supports only ordinal multiclass classification.
 
 We are extending the library to other algorithms, also unsupervised. Your voluntary contribution is welcome.
 
-At present, the library is optimized for memory footprint. [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM) performs model training and cross-validation, and creates .c and .h files that store the best model's parameters. These files must be compiled together with the [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository.
-
-We are currently working to provide dynamic configurability to all the algorithms.
+The library is optimized for memory footprint. [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM) performs model training and cross-validation, and creates .c and .h files that store the best model's parameters. These files must be compiled together with the [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository.
 
 ## Usage
 
@@ -22,7 +21,7 @@ You can compile the code as an executable or as a static library, using gcc/g++ 
 The Micro-LM files need to be compiled together with the .c and .h files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
 
 The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
-- The algorithm: `SVM` or `DT` or `KNN`
+- The algorithm: `SVM`, `DT`, `KNN` or `TES`
 - `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations
 - `REGRESSION`, if you want to perform a regression. Default is classification (no regression)
 
@@ -45,3 +44,6 @@ Please see [CONTRIBUTING.md](https://github.com/Edge-Learning-Machine/Desk-LM/bl
 ## Reference article for more infomation
 F., Sakr, F., Bellotti, R., Berta, A., De Gloria, "Machine Learning on Mainstream Microcontrollers," Sensors 2020, 20, 2638.
 https://www.mdpi.com/1424-8220/20/9/2638
+
+## References
+https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-9-time-series-analysis-in-python-a270cb05e0b3
