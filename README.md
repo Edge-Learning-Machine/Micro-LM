@@ -22,18 +22,18 @@ The Micro-LM files need to be compiled together with the .c and .h files produce
 
 The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
 - The algorithm: `SVM`, `DT`, `KNN` or `TES`
-- `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations
-- `REGRESSION`, if you want to perform a regression. Default is classification (no regression)
+- `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm.
+- `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm. TES performs only regression
 
 `ELM.h` exposes the following functions:
 - *`preprocess(X)`*, where X is the sample vector
-- *`algo_classification(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
-- *`algo_regression(X)`*, where X is the sample vector. algo is knn, decisionTree, svm
-- *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. algo is knn, decisionTree, svm
+- *`algo_classification(X)`*, where X is the sample vector. Algo is: knn, decisionTree, svm.
+- *`algo_regression(X)`*, where X is the sample vector. Algo is: knn, decisionTree, svm.
+- *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. Algo is: knn, decisionTree, svm.
+- *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
 
 ## Data type
 float 32 data are used
-
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Edge-Learning-Machine/Micro-LM/blob/master/LICENSE.md) file for details
