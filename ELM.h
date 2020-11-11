@@ -10,6 +10,7 @@
 //#define DT
 //#define KNN
 //#define TripleES //Holt-Winters Triple exponential smoothing
+//#define RF
 
 //If it is a whole dataset performance analysis. Otherwise it is one shot
 //#define DS_TEST
@@ -42,5 +43,12 @@ int knn_classification(float[]);
 int* HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta,
 		            double gamma,int slen, int n_preds, double scaling_factor);
 #endif
+
+#ifdef RF
+void randomForest_test_dataset(bool);
+float randomForest_regression(float[]);
+int randomForest_classification(float[]);
+#endif
+
 
 #endif
