@@ -50,12 +50,6 @@ void randomForest_test_dataset(bool isRegression)
 #endif
 
 
-extern int* forest_children_left[FOREST_DIM];
-extern int* forest_children_right[FOREST_DIM];
-extern int* forest_feature[FOREST_DIM];
-extern float* forest_threshold[FOREST_DIM];
-extern int** forest_values[FOREST_DIM];
-
 #ifndef REGRESSION
 int randomForest_classification(float X[])
 {
@@ -63,27 +57,27 @@ int randomForest_classification(float X[])
 	float probab[FOREST_DIM][N_CLASS];
 	bool next_tree = 0;
 	
-	int maxClass;
-    int maxValue = 0;
+	int maxClass = -1;
+    float maxValue = 0;
 	
 	//compute the classification for each tree
 	for(int i=0; i< FOREST_DIM; i++)
 	{
 		next_tree=0;
-		
+		currentNode = 0;
 		
 		while (next_tree==0)
 		{
 			//travel the tree
-			if ((*forest_feature[i])[currentNode] >= 0)
+			if (*(forest_feature[i] + currentNode) >= 0)
 			{
-				if (X[(*forest_feature[i])[currentNode]] <= (*forest_threshold[i])[currentNode])
+				if (X[*(forest_feature[i] + currentNode)] <= *(forest_threshold[i] +currentNode))
 				{
-					currentNode = (*forest_children_left[i])[currentNode];
+					currentNode = *(forest_children_left[i] +currentNode);
 				}
 				else
 				{
-					currentNode = (*forest_children_right[i])[currentNode];
+					currentNode = *(forest_children_right[i] + currentNode);
 				}
 			}
 			else
@@ -92,14 +86,16 @@ int randomForest_classification(float X[])
 					// inside each leaf note are stored the number of sample divided between the classes; the probability of each prediction is value/total samples
 					int j;
 					float total_samples=0;
+
+					
 					
 					for (j = 0; j < N_CLASS; j++)
 					{
-						total_samples += (float)(*forest_values[i])[currentNode][j];						
+						total_samples += (float)*(forest_values[i] + currentNode * N_CLASS + j);
 					}
 					for (j = 0; j < N_CLASS; j++)
 					{
-						probab[i][j]= (float)(*forest_values[i])[currentNode][j] / total_samples;						
+						probab[i][j]= (float)*(forest_values[i] + currentNode * N_CLASS + j) / (float)total_samples;
 					}
 					
 				}
@@ -116,14 +112,14 @@ int randomForest_classification(float X[])
 	for(int i=0; i < N_CLASS; i++ )
 		result[i]=0;
     
-	for(int i=0; i< FOREST_DIM; i++))
+	for(int i=0; i< FOREST_DIM; i++)
 	{
 		for(int j=0; j < N_CLASS; j++ )
-			result[j] += probabi[i][j]; 
+			result[j] += probab[i][j]; 
 	}
 	
 	
-    for (j = 0; j < N_CLASS; j++)
+    for (int j = 0; j < N_CLASS; j++)
     {
         if (result[j] >= maxValue)
         {
