@@ -25,7 +25,7 @@ The Micro-LM files need to be compiled together with the .c and .h files produce
 The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
 - The algorithm: `SVM`, `DT`, `KNN` or `TripleES`
 - `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm.
-- `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm. TES performs only regression
+- `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm. TripleES performs only regression
 
 `ELM.h` exposes the following functions:
 - *`preprocess(X)`*, where X is the sample vector
