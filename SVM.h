@@ -7,8 +7,9 @@
 //#ifdef SAMPLE_TESTINGSET
 //#include "minimal_testing_set.h"
 //#else
+#ifdef DS_TEST
 #include "testing_set.h"
-//#endif
+#endif
 #include "PPParams.h"
 #include "SVM_params.h"
 #include "ELM.h"
