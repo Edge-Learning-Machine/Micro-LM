@@ -6,48 +6,49 @@
 /*
  * Define the ML algorithm
  */
-#define SVM
-//#define DT
-//#define KNN
+//#define SVM   //Support Vector Machine
+#define DT    //Decisional Tree 
+//#define KNN   //K-Nearest Neighbours
 //#define TripleES //Holt-Winters Triple exponential smoothing
-//#define RF
+//#define RF    //Random Forest
 
-//If it is a whole dataset performance analysis. Otherwise it is one shot
-//#define DS_TEST
-
-//If it is a regression problem
+//Define if it is a regression problem
 //#define REGRESSION
 
-float *preprocess(float *);
+//Define if it's a test about the Test Set
+#define DS_TEST
+
+
+//#ifdef SAMPLE_TESTINGSET
+//#include "minimal_testing_set.h"
+//#endif
+
+#include "Preprocess.h"
+
+#ifdef DS_TEST
+#include "testing_set.h"
+#endif
 
 #ifdef SVM
-void svm_test_dataset(bool);
-float svm_regression(float[]);
-int svm_classification(float[]);
+#include "SVM.h"
 #endif
 
 #ifdef DT
-void decisionTree_test_dataset(bool);
-float decisionTree_regression(float[]);
-int decisionTree_classification(float[]);
+#include "DT.h"
 #endif
 
 #ifdef KNN
-void knn_test_dataset(bool);
-float knn_regression(float[]);
-int knn_classification(float[]);
+#include "KNN.h"
+#endif
+
+#ifdef RF
+#include "RF.h"
 #endif
 
 #ifdef TripleES
 #include "TripleES_params.h"
 int* HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta,
-		            double gamma,int slen, int n_preds, double scaling_factor);
-#endif
-
-#ifdef RF
-void randomForest_test_dataset(bool);
-float randomForest_regression(float[]);
-int randomForest_classification(float[]);
+	double gamma, int slen, int n_preds, double scaling_factor);
 #endif
 
 

@@ -7,7 +7,7 @@
 #include <stdbool.h>
 
 #ifdef DS_TEST
-void decisionTree_test_dataset(bool isRegression)
+void decisionTree_test_dataset()
 {
 
     #ifndef REGRESSION

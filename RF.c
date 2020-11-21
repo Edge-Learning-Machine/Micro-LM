@@ -7,7 +7,7 @@
 #include <stdbool.h>
 
 #ifdef DS_TEST
-void randomForest_test_dataset(bool isRegression)
+void randomForest_test_dataset()
 {
 
     #ifndef REGRESSION

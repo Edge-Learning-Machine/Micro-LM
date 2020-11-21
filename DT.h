@@ -1,3 +1,5 @@
+#ifdef DT
+
 #ifndef DT_H
 
 #define DT_H
@@ -6,17 +8,13 @@
 #include <stdbool.h>
 
 
-//#ifdef SAMPLE_TESTINGSET
-//#include "minimal_testing_set.h"
-//#else
-#include "testing_set.h"
-//#endif
-
 #include "PPParams.h"
 #include "DT_params.h"
 
 
-void decisionTree_test_dataset(bool);
+void decisionTree_test_dataset();
 float decisionTree_regression(float []);
 int decisionTree_classification(float []);
 #endif
+
+#endif // DT

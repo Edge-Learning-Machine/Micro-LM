@@ -15,7 +15,7 @@ void svc_test_dataset();
 #endif
 
 #ifdef DS_TEST
-void svm_test_dataset(bool isRegression)
+void svm_test_dataset()
 {
 #ifdef REGRESSION
     svr_test_dataset();
