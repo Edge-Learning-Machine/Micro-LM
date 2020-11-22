@@ -6,8 +6,8 @@
 /*
  * Define the ML algorithm
  */
-#define SVM
-//#define DT
+//#define SVM
+#define DT
 //#define KNN
 //#define TripleES //Holt-Winters Triple exponential smoothing
 
