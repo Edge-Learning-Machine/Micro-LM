@@ -91,7 +91,7 @@ int knn_classification(float X[]) {
     {
         int n;
         float scores[N_CLASS];
-        memset(scores, 0, N_CLASS*sizeof(float)); 
+        memset(scores, 0, N_CLASS*sizeof(float));
         for(n=0; n<K; n++) {
             scores[y_train[neighbours[n].id]] += neighbours[n].score;
         }
@@ -164,13 +164,13 @@ float knn_regression(float X[]) {
 }
 #endif
 
-/* qsort struct comparision function (price float field) */ 
+/* qsort struct comparision function (price float field) */
 int struct_cmp_by_score_dec(const void *a, const void *b) 
 { 
     struct neighbour *ia = (struct neighbour *)a;
     struct neighbour *ib = (struct neighbour *)b;
     return -(int)(100000.f*ia->score - 100000.f*ib->score);
-	/* float comparison: returns negative if b > a 
+	/* float comparison: returns negative if b > a
 	and positive if a > b. We multiplied result by 100.0
 	to preserve decimal fraction */ 
     //Decreasing

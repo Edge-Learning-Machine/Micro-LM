@@ -68,7 +68,7 @@ int decisionTree_classification(float X[])
         }
         else
         { // Leaf node
-            {
+            /*{
                 int j;
                 int maxClass;
                 int maxValue = 0;
@@ -82,7 +82,15 @@ int decisionTree_classification(float X[])
                 }
                 return maxClass;
             }
-            break;
+            break;*/
+        	int j;
+        	for (j = 0; j < N_LEAVES; j++) {
+				if(leaf_nodes[j][0]==currentNode) {
+					int maxIdx = leaf_nodes[j][1];
+					int maxClass = target_classes[maxIdx];
+					return maxClass;
+				}
+        	}
         }
     }
 }
