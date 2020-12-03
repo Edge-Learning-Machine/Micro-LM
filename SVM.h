@@ -10,10 +10,8 @@
 #include "SVM_params.h"
 #include "ELM.h"
 
-void svm_test_dataset();
 float svm_regression(float []);
 int svm_classification(float []);
-//float *preprocess(float *);
 
 #endif
 

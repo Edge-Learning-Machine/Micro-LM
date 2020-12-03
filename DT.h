@@ -12,7 +12,6 @@
 #include "DT_params.h"
 
 
-void decisionTree_test_dataset();
 float decisionTree_regression(float []);
 int decisionTree_classification(float []);
 #endif

@@ -11,8 +11,6 @@
 #include "PPParams.h"
 #include "RF_params.h"
 
-
-void randomForest_test_dataset();
 float randomForest_regression(float []);
 int randomForest_classification(float []);
 #endif
