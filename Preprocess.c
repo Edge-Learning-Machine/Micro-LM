@@ -25,12 +25,18 @@ int i=0, j=0;
 for (j=0; j<N_ORIG_FEATURE; j++) {
     debug[j]=X[j];
 }*/
+#ifdef DO_PCA
 for (i=0; i<N_FEATURE; i++) {
     X_t[i]=0;
     for (j=0; j<N_ORIG_FEATURE; j++) {
-        X_t[i] += X[j]*pca_components[i][j];
+        X_t[i] += (X[j]-pca_means[j])*pca_components[i][j];
     }
 }
+#else
+for (i=0; i<N_FEATURE; i++) {
+    X_t[i]=X[i];
+}
+#endif
 return X_t;
 }
 

@@ -23,7 +23,8 @@ void decisionTree_test_dataset(bool isRegression)
     {
         #ifndef REGRESSION
         {
-            predictedLabels[i] = decisionTree_classification(X_test[i]);
+        	float *X_t = preprocess(X_test[i]);
+        	predictedLabels[i] = decisionTree_classification(X_t);
             if (predictedLabels[i] == y_test[i])
             {
                 nCorrect++;
@@ -59,11 +60,19 @@ int decisionTree_classification(float X[])
         {
             if (X[feature[currentNode]] <= threshold[currentNode])
             {
-                currentNode = children_left[currentNode];
+													#ifdef DEBUG
+            	printf("\ncurrent node: %d, X:%f <= %f\n", currentNode, X[feature[currentNode]], threshold[currentNode]);
+            	fflush(stdout);
+													#endif
+            	currentNode = children_left[currentNode];
             }
             else
             {
-                currentNode = children_right[currentNode];
+            	#ifdef DEBUG
+													printf("\ncurrent node: %d, X:%f > %f\n", currentNode, X[feature[currentNode]], threshold[currentNode]);
+            	fflush(stdout);
+													#endif
+            	currentNode = children_right[currentNode];
             }
         }
         else
@@ -88,6 +97,8 @@ int decisionTree_classification(float X[])
 				if(leaf_nodes[j][0]==currentNode) {
 					int maxIdx = leaf_nodes[j][1];
 					int maxClass = target_classes[maxIdx];
+					printf("\ncurrent node: %d, decision: %d\n", currentNode, maxClass);
+					fflush(stdout);
 					return maxClass;
 				}
         	}
