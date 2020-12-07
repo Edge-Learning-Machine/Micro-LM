@@ -16,7 +16,7 @@ normalize_std(float* X, float* s_x, float* u_x) {
 normalize_mm(float* X, float* s_x) {
 	int i = 0;
 	for (i = 0; i < N_ORIG_FEATURE; i++) {
-		X[i] = s_x[i] * X[i];
+		X[i] = (s_x[i] * X[i]) + m_x[i];
 	}
 }
 #endif
