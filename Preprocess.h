@@ -12,9 +12,10 @@ extern float X_t_Processed[N_TEST][N_FEATURE];
 #endif // DS_TEST
 
 #ifdef STANDARD_SCALING
-int normalize_std(float* X, float* s_x, float* u_x);
+//int normalize_std(float* X, float* s_x, float* u_x);
+int scale_std(float* X);
 #elif defined(MINMAX_SCALING)
-int normalize_mm(float* X, float* s_x);
+int scale_mm(float* X);
 #endif
 
 float* PCA_transform(float* X);

@@ -6,14 +6,15 @@ float X_t[N_FEATURE];
 
 
 #ifdef STANDARD_SCALING
-normalize_std(float* X, float* s_x, float* u_x) {
+//normalize_std(float* X, float* s_x, float* u_x) {
+scale_std(float* X) {
 	int i = 0;
 	for (i = 0; i < N_ORIG_FEATURE; i++) {
 		X[i] = (X[i] - u_x[i]) / s_x[i];
 	}
 }
 #elif defined(MINMAX_SCALING)
-normalize_mm(float* X, float* s_x) {
+scale_mm(float* X) {
 	int i = 0;
 	for (i = 0; i < N_ORIG_FEATURE; i++) {
 		X[i] = (s_x[i] * X[i]) + m_x[i];
@@ -42,9 +43,9 @@ float *PCA_transform(float *X){
 float* preprocess(float* X)
 {
 #ifdef STANDARD_SCALING
-	normalize_std(X, s_x, u_x);
+	scale_std(X);
 #elif defined(MINMAX_SCALING)
-	normalize_mm(X, s_x);
+	scale_mm(X);
 #endif
 	return PCA_transform(X);
 }
