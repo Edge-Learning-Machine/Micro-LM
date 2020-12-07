@@ -7,47 +7,11 @@
 #include <stdbool.h>
 
 #ifdef DS_TEST
-void decisionTree_test_dataset(bool isRegression)
-{
-
-    #ifndef REGRESSION
-        int predictedLabels[N_TEST];
-    #else
-        float predictions[N_TEST];
-    #endif
-
-    int nCorrect = 0;
-    int i = 0;
-
-    for (i = 0; i < N_TEST; i++)
-    {
-        #ifndef REGRESSION
-        {
-        	float *X_t = preprocess(X_test[i]);
-        	predictedLabels[i] = decisionTree_classification(X_t);
-            if (predictedLabels[i] == y_test[i])
-            {
-                nCorrect++;
-            }
-        }
-        #else
-        {
-            predictions[i] = decisionTree_regression(X_test[i]);
-        }
-        #endif
-    }
-
-    #ifndef REGRESSION
-    {
-        printf("\nDecision tree rate: %f\n", (float)nCorrect * 100.0f / (float)N_TEST);
-        fflush(stdout);
-    }
-    #else
-    {
-        //TBD, figure for regression
-    }
-    #endif
-}
+#ifdef REGRESSION
+float (*pRegress)(float X[]) = decisionTree_regression;
+#else
+int (*pClassf)(float X[]) = decisionTree_classification;
+#endif
 #endif
 
 #ifndef REGRESSION

@@ -6,61 +6,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#ifdef DS_TEST
+#ifdef REGRESSION
+float (*pRegress)(float X[]) = svm_regression;
+#else
+int (*pClassf)(float X[]) = svm_classification;
+#endif
+#endif
+
 float *PCA_transform(float *);
 
-#ifdef REGRESSION
-void svr_test_dataset();
-#else
-void svc_test_dataset();
-#endif
 
-#ifdef DS_TEST
-void svm_test_dataset(bool isRegression)
-{
-#ifdef REGRESSION
-    svr_test_dataset();
-#else
-    svc_test_dataset();
-#endif
-}
 
-#ifndef REGRESSION
-void svc_test_dataset()
-{
-    int predictedLabels[N_TEST];
-    int nCorrect = 0;
-    int i = 0;
-
-    nCorrect = 0;
-    for (i = 0; i < N_TEST; i++)
-    {
-        predictedLabels[i] = svm_classification(X_test[i]);
-        if (predictedLabels[i] == y_test[i])
-        {
-            nCorrect++;
-        }
-    }
-    printf("\nLinear SVM rate: %f\n", (float)nCorrect * 100.0f / (float)N_TEST);
-    fflush(stdout);
-}
-#endif
-
-#ifdef REGRESSION
-void svr_test_dataset()
-{
-    float predictions[N_TEST];
-    int i = 0;
-
-    for (i = 0; i < N_TEST; i++)
-    {
-        predictions[i] = svm_regression(X_test[i]);
-    }
-
-    //TBD
-    //Compute final figure
-}
-#endif
-#endif
 
 #ifndef REGRESSION
 int svm_classification(float X[])
@@ -126,3 +83,4 @@ float svm_regression(float X[])
 #endif
 
 #endif
+

@@ -7,5 +7,19 @@
 
 extern float X_t[N_FEATURE];
 
+#ifdef DS_TEST
+extern float X_t_Processed[N_TEST][N_FEATURE];
+#endif // DS_TEST
+
+#ifdef STANDARD_SCALING
+int normalize_std(float* X, float* s_x, float* u_x);
+#elif defined(MINMAX_SCALING)
+int normalize_mm(float* X, float* s_x);
+#endif
+
+float* PCA_transform(float* X);
+
+float* preprocess(float* X);
+
 #endif
 

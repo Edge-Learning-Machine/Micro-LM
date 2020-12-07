@@ -9,6 +9,14 @@
 #include <stdlib.h> // To check if works on STM32
 #include <string.h> // To check if works on STM32
 
+#ifdef DS_TEST
+#ifdef REGRESSION
+float (*pRegress)(float X[]) = knn_regression;
+#else
+int (*pClassf)(float X[]) = knn_classification;
+#endif
+#endif
+
 
 struct neighbour{
         int id;
@@ -21,40 +29,7 @@ int struct_cmp_by_score_dec(const void *, const void *);
 
 //int regressionLabels[N_CLASS]; //Attention!!!!!!!!
 
-#ifdef DS_TEST
-void knn_test_dataset(bool isRegression) {
-    // KNN
-    // https://www.geeksforgeeks.org/weighted-k-nn/
-    struct neighbour neighbours[N_TRAIN];
 
-    int nCorrect = 0;
-    int i = 0;
-
-    #ifndef REGRESSION
-    int predictedLabels[N_TEST];
-    #else
-    float predictions[N_TEST];
-    #endif
-
-    for(i=0; i < N_TEST; i++) {       
-        #ifndef REGRESSION
-            predictedLabels[i] = knn_classification(X_test[i]);
-            if (predictedLabels[i] == y_test[i]) {
-                nCorrect++;
-            }
-        #else
-            predictions[i] = knn_regression(X_test[i]);
-        #endif
-    }
-    #ifndef REGRESSION
-        printf("\nK-nn rate: %f\n", (float)nCorrect*100.0f/(float)N_TEST);
-        fflush(stdout);
-    #else
-        //TBD
-    #endif
-    return;
-}
-#endif
 
 #ifndef REGRESSION
 int knn_classification(float X[]) {
@@ -91,7 +66,7 @@ int knn_classification(float X[]) {
     {
         int n;
         float scores[N_CLASS];
-        memset(scores, 0, N_CLASS*sizeof(float));
+        memset(scores, 0, N_CLASS*sizeof(float)); 
         for(n=0; n<K; n++) {
             scores[y_train[neighbours[n].id]] += neighbours[n].score;
         }
@@ -164,13 +139,13 @@ float knn_regression(float X[]) {
 }
 #endif
 
-/* qsort struct comparision function (price float field) */
+/* qsort struct comparision function (price float field) */ 
 int struct_cmp_by_score_dec(const void *a, const void *b) 
 { 
     struct neighbour *ia = (struct neighbour *)a;
     struct neighbour *ib = (struct neighbour *)b;
     return -(int)(100000.f*ia->score - 100000.f*ib->score);
-	/* float comparison: returns negative if b > a
+	/* float comparison: returns negative if b > a 
 	and positive if a > b. We multiplied result by 100.0
 	to preserve decimal fraction */ 
     //Decreasing
