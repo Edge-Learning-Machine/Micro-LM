@@ -18,7 +18,7 @@ int main() {
 	float* X_t = preprocess(X);
 	svm_regression(X_t);
 #else
-	float X[] = { 1, 2, 3, 4, 5, 6 };
+	//float X[] = { 1, 2, 3, 4, 5, 6 };
 	//float Y[] = { -0.20647835151039698, -0.4513772469140586, -0.22887836700722633, -0.10757521477907099 };
 	float* X_t = preprocess(X);
 	svm_classification(X_t);

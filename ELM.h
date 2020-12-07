@@ -7,18 +7,18 @@
  * Define the ML algorithm
  */
 //#define SVM   //Support Vector Machine
-//#define DT    //Decisional Tree 
+#define DT    //Decisional Tree
 //#define KNN   //K-Nearest Neighbours
 //#define TripleES //Holt-Winters Triple exponential smoothing
-#define RF    //Random Forest
+//#define RF    //Random Forest
 
 //Define if it is a regression problem
 //#define REGRESSION
 
 //Define if it's a test about the Test Set
-#define DS_TEST
+//#define DS_TEST
 
-
+#define DEBUG
 
 #ifdef DS_TEST
 #include "testing_set.h"

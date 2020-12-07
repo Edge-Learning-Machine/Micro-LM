@@ -1,3 +1,5 @@
+#ifdef DS_TEST
+
 #include "Test.h"
 #include "ELM.h"
 
@@ -54,3 +56,4 @@ void RunTest()
     #endif
 }
 
+#endif //DS_TEST
