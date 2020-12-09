@@ -10,8 +10,11 @@
 #include "SVM_params.h"
 #include "ELM.h"
 
+#ifdef REGRESSION
 float svm_regression(float []);
+#else
 int svm_classification(float []);
+#endif // REGRESSION
 
 #endif
 

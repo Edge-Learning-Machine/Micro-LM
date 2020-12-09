@@ -12,8 +12,12 @@
 #include "DT_params.h"
 
 
+#ifdef REGRESSION
 float decisionTree_regression(float []);
+#else
 int decisionTree_classification(float []);
+#endif // REGRESSION
+
 #endif
 
 #endif // DT

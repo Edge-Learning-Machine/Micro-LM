@@ -11,9 +11,13 @@
 #include "PPParams.h"
 #include "RF_params.h"
 
+#ifdef REGRESSION
 float randomForest_regression(float []);
+#else
 int randomForest_classification(float []);
-#endif
+#endif //REGRESSION
+
+#endif //RF_H
 
 #endif //RF
 

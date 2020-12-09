@@ -83,8 +83,15 @@ int main() {
 
 
 #ifdef RF
+	/*
+	//float X[] = { 41,0,1,130,204,0,0,172,0,1.4,2,0,2 };
+	//float X[] = { 56,1,1,120,236,0,1,178,0,0.8,2,0,2 };
+	float X[] = { 57,0,1,130,236,0,0,174,0,0,1,1,2 };
 
-	
+	float* X_t = preprocess(X);
+	int out = randomForest_classification(X_t);
+	printf("\n%d\n", out);
+	*/
 #endif 
 
 }

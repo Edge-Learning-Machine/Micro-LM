@@ -3,22 +3,36 @@
 
 #include <stdbool.h>
 
-/*
- * Define the ML algorithm
+ /*
+ * Begin configuration
  */
+
+//Define the ML algorithm
+
 //#define SVM   //Support Vector Machine
-#define DT    //Decisional Tree
+//#define DT    //Decisional Tree
 //#define KNN   //K-Nearest Neighbours
 //#define TripleES //Holt-Winters Triple exponential smoothing
-//#define RF    //Random Forest
+#define RF    //Random Forest
+
 
 //Define if it is a regression problem
+
 //#define REGRESSION
 
-//Define if it's a test about the Test Set
-//#define DS_TEST
+//Define if it's a test on the Test Set
 
-#define DEBUG
+#define DS_TEST
+
+//Define if you need debug messages
+//#define DEBUG
+
+
+//end configuration
+
+#if !defined(RF) && !defined(DT) && !defined(KNN) && !defined(SVM) && !defined(TripleEs)
+#error You have to define one algorithm
+#endif
 
 #ifdef DS_TEST
 #include "testing_set.h"

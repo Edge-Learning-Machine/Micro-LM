@@ -13,8 +13,12 @@
 #include "training_set.h"
 #include "KNN_params.h"
 
+#ifdef REGRESSION
 float knn_regression(float[]);
+#else
 int knn_classification(float[]);
+#endif // REGRESSION
+
 #endif
 
 #endif // KNN
