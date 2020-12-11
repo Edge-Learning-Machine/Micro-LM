@@ -6,13 +6,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#ifdef DS_TEST
+
 #ifdef REGRESSION
 float (*pRegress)(float X[]) = svm_regression;
 #else
 int (*pClassf)(float X[]) = svm_classification;
 #endif
-#endif
+
 
 float *PCA_transform(float *);
 

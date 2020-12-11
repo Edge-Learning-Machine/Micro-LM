@@ -3,9 +3,9 @@
 
 #include <stdbool.h>
 
- /*
- * Begin configuration
- */
+/*
+* Begin configuration
+*/
 
 //Define the ML algorithm
 
@@ -22,7 +22,7 @@
 
 //Define if it's a test on the Test Set
 
-#define DS_TEST
+//#define DS_TEST
 
 //Define if you need debug messages
 //#define DEBUG
@@ -30,6 +30,8 @@
 
 //end configuration
 
+
+//guard to prevent compiling without an algorithm
 #if !defined(RF) && !defined(DT) && !defined(KNN) && !defined(SVM) && !defined(TripleEs)
 #error You have to define one algorithm
 #endif
@@ -65,5 +67,11 @@ int* HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta,
 	double gamma, int slen, int n_preds, double scaling_factor);
 #endif
 
+
+#ifdef REGRESSION
+extern float (*pRegress)(float X[]);
+#else
+extern int (*pClassf)(float X[]);
+#endif
 
 #endif

@@ -6,13 +6,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#ifdef DS_TEST
+
 #ifdef REGRESSION
 float (*pRegress)(float X[]) = randomForest_regression;
 #else
 int (*pClassf)(float X[]) = randomForest_classification;
 #endif
-#endif
+
 
 
 #ifndef REGRESSION
@@ -38,26 +38,26 @@ int randomForest_classification(float X[])
 #endif
 		while (next_tree == 0)
 		{
-			
+
 			//travel the tree
 			if (*(forest_feature[i] + currentNode) >= 0)
 			{
 				if (X[*(forest_feature[i] + currentNode)] <= *(forest_threshold[i] + currentNode))
 				{
-					#ifdef DEBUG
+#ifdef DEBUG
 					printf("\ncurrent node: %d, X:%f <= %f\n", currentNode, X[*(forest_feature[i] + currentNode)], *(forest_threshold[i] + currentNode));
 					fflush(stdout);
-					#endif
-													
+#endif
+
 					currentNode = *(forest_children_left[i] + currentNode);
 				}
 				else
 				{
-					#ifdef DEBUG
+#ifdef DEBUG
 					printf("\ncurrent node: %d, X:%f <= %f\n", currentNode, X[*(forest_feature[i] + currentNode)], *(forest_threshold[i] + currentNode));
 					fflush(stdout);
-					#endif
-							
+#endif
+
 					currentNode = *(forest_children_right[i] + currentNode);
 				}
 			}
@@ -102,7 +102,7 @@ int randomForest_classification(float X[])
 	{
 		for (int j = 0; j < N_CLASS; j++)
 		{
-			if(i==0)
+			if (i == 0)
 				result[j] = 0; //init the array
 			result[j] += probab[i][j];
 #ifdef DEBUG
@@ -139,21 +139,32 @@ float randomForest_regression(float X[])
 
 		while (next_tree == 0)
 		{
+
 			//travel the tree
-			if ((*forest_feature[i])[currentNode] >= 0)
+			if (*(forest_feature[i] + currentNode) >= 0)
 			{
-				if (X[(*forest_feature[i])[currentNode]] <= (*forest_threshold[i])[currentNode])
+				if (X[*(forest_feature[i] + currentNode)] <= *(forest_threshold[i] + currentNode))
 				{
-					currentNode = (*forest_children_left[i])[currentNode];
+#ifdef DEBUG
+					printf("\ncurrent node: %d, X:%f <= %f\n", currentNode, X[*(forest_feature[i] + currentNode)], *(forest_threshold[i] + currentNode));
+					fflush(stdout);
+#endif
+
+					currentNode = *(forest_children_left[i] + currentNode);
 				}
 				else
 				{
-					currentNode = (*forest_children_right[i])[currentNode];
+#ifdef DEBUG
+					printf("\ncurrent node: %d, X:%f <= %f\n", currentNode, X[*(forest_feature[i] + currentNode)], *(forest_threshold[i] + currentNode));
+					fflush(stdout);
+#endif
+
+					currentNode = *(forest_children_right[i] + currentNode);
 				}
 			}
 			else
 			{ // Leaf node
-				result += (*forest_values[i])[currentNode][0];
+				result += (*(forest_values[i] + currentNode);
 			}
 			next_tree = 1;
 		}

@@ -12,9 +12,9 @@
 #include "RF_params.h"
 
 #ifdef REGRESSION
-float randomForest_regression(float []);
+float randomForest_regression(float[]);
 #else
-int randomForest_classification(float []);
+int randomForest_classification(float[]);
 #endif //REGRESSION
 
 #endif //RF_H

@@ -7,12 +7,6 @@
 #include <stdio.h>
 #include "ELM.h"
 
-#ifdef REGRESSION
-extern float (*pRegress)(float X[]);
-#else
-extern int (*pClassf)(float X[]);
-#endif
-
 void RunTest();
 
 

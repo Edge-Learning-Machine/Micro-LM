@@ -5,6 +5,7 @@ Micro-LM currently implements the following ML algorithms:
 
 - `Linear SVM`
 - `Decision Tree`
+- `Random Forest`
 - `K-NN`
 - `TripleES`, Holt-Winters Triple Exponential Smoothing for time series
 
@@ -23,19 +24,27 @@ You can compile the code as an executable or as a static library, using gcc/g++ 
 The Micro-LM files need to be compiled together with the .c and .h files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
 
 The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
-- The algorithm: `SVM`, `DT`, `KNN` or `TripleES`
-- `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm.
-- `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm. TripleES performs only regression
+- The algorithm: `SVM`, `DT`, `RF`, `KNN` or `TripleES`
+- `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm, randomForest.
+- `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm, randomForest. TripleES performs only regression
 
 `ELM.h` exposes the following functions:
 - *`preprocess(X)`*, where X is the sample vector
-- *`algo_classification(X)`*, where X is the sample vector. Algo is: knn, decisionTree, svm.
-- *`algo_regression(X)`*, where X is the sample vector. Algo is: knn, decisionTree, svm.
-- *`algo_test_dataset(isRegression)`*, for (whole or minimal) dataset testing. Algo is: knn, decisionTree, svm.
+- *`(\*pClassf)(X)`*, where X is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm.
+- *`(\*pRegress)(X)`*, where X is the sample vector. regress is a pointer to a the regression function of the selected algorithm.
+
 - *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
+
+`Test.h` exposes the following function:
+- *`RunTest`*, for the whole dataset testing. Algorithm is automatically selected using the previous configuration.
 
 ## Data type
 float 32 data are used
+
+## Algorithm template
+Inside this repository you there are `ExampleAlgoTemplate.h` and `ExampleAlgoTemplate.c`. 
+Those files should be used as base schema to develop more Machine Learning Algorithm that are fully compatible to the ELM.h structure.
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Edge-Learning-Machine/Micro-LM/blob/master/LICENSE.md) file for details
