@@ -30,8 +30,8 @@ The program must be configured in `ELM.h`, where the user has to specify some `#
 
 `ELM.h` exposes the following functions:
 - *`preprocess(X)`*, where X is the sample vector
-- *`(\*pClassf)(X)`*, where X is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm.
-- *`(\*pRegress)(X)`*, where X is the sample vector. regress is a pointer to a the regression function of the selected algorithm.
+- *`( \* pClassf)(X)`*, where X is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm.
+- *`( \*pRegress)(X)`*, where X is the sample vector. regress is a pointer to a the regression function of the selected algorithm.
 
 - *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
 
