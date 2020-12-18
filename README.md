@@ -42,7 +42,7 @@ The program must be configured in `ELM.h`, where the user has to specify some `#
 float 32 data are used
 
 ## Algorithm template
-Inside this repository you there are `ExampleAlgoTemplate.h` and `ExampleAlgoTemplate.c`. 
+Inside this repository there are `ExampleAlgoTemplate.h` and `ExampleAlgoTemplate.c`. 
 Those files should be used as base schema to develop more Machine Learning Algorithm that are fully compatible to the ELM.h structure.
 
 
