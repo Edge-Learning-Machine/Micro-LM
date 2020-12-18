@@ -52,6 +52,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 ## Contributing
 Please see [CONTRIBUTING.md](https://github.com/Edge-Learning-Machine/Desk-LM/blob/master/docs/CONTRIBUTING.md)
 
+Credits:
+- `Alessio Capello` for Random Forest implementation and refactoring;
+- `Gabriele Campodonico` for TripleES implementation;
+- `Laura Pisano` for TripleES implementation;
+
 ## Reference article for more infomation
 F., Sakr, F., Bellotti, R., Berta, A., De Gloria, "Machine Learning on Mainstream Microcontrollers," Sensors 2020, 20, 2638.
 https://www.mdpi.com/1424-8220/20/9/2638
