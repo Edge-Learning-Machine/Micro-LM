@@ -13,6 +13,7 @@ Each algorithm provides both classification and regression, for binary and multi
 
 We are extending the library to other algorithms, also unsupervised. Your voluntary contribution is welcome.
 
+# Learning model
 The library is optimized for memory footprint. [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM) performs model training and cross-validation, and creates .c and .h files that store the best model's parameters. These files must be compiled together with the [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository.
 
 ## Usage
@@ -27,14 +28,14 @@ The program must be configured in `ELM.h`, where the user has to specify some `#
 - `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm, randomForest. TripleES performs only regression
 
 `ELM.h` exposes the following functions:
-- *`preprocess(X)`*, where X is the sample vector
-- *`( \* pClassf)(X)`*, where X is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm.
-- *`( \*pRegress)(X)`*, where X is the sample vector. regress is a pointer to a the regression function of the selected algorithm.
+- *`float* preprocess(float* X)`*, where X is the sample vector. The return is the pointer to the processed vector. Use that pointer for the classification / regression function.
+- *`int ( * pClassf)(float[] X_processed)`*, where X_processed is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm. The return is value of the estimated class for the input.
+- *`float ( *pRegress)(float[] X_processed)`*, where X_processed is the sample vector. pRegress is a pointer to a the regression function of the selected algorithm.The return is estimated value for the input.
 
 - *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
 
 `Test.h` exposes the following function:
-- *`RunTest`*, for the whole dataset testing. Algorithm is automatically selected using the previous configuration.
+- *`void RunTest()`*, for the whole dataset testing. Algorithm is automatically selected using the previous configuration. This function prints the accuracy rate on Console.  Note: Preprocess is built in this function.
 
 ## Data type
 float 32 data are used
