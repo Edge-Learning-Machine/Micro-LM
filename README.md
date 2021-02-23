@@ -1,5 +1,5 @@
 # Micro-LM
-A plain C library for machine learning on edge devices.
+A plain C library for machine learning on edge devices. It requires configuration files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
 
 Micro-LM currently implements the following ML algorithms:
 
@@ -13,29 +13,26 @@ Each algorithm provides both classification and regression, for binary and multi
 
 We are extending the library to other algorithms, also unsupervised. Your voluntary contribution is welcome.
 
-# Learning model
-The library is optimized for memory footprint. [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM) performs model training and cross-validation, and creates .c and .h files that store the best model's parameters. These files must be compiled together with the [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository.
-
 ## Usage
+
+The [`Micro-LM`](https://github.com/Edge-Learning-Machine/Micro-LM) files available in this repository  must be compiled together with the .c and .h files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM), which performs model training and cross-validation, and creates .c and .h files that store the best model's parameters.
 
 You can compile the code as an executable or as a static library, using gcc/g++ for a Microcontroller or a desktop (e.g., thorugh Eclipse CDT or Visual Studio Code).
 
-The Micro-LM files need to be compiled together with the .c and .h files produced by [`Desk-LM`](https://github.com/Edge-Learning-Machine/Desk-LM).
-
-The program must be configured in `ELM.h`, where the user has to specify some `#define`, such as:
+Configuration must be performed in `ELM.h`, where the user has to specify some `#define`, such as:
 - The algorithm: `SVM`, `DT`, `RF`, `KNN` or `TripleES`
 - `DS_TEST`, if you want to test performance in a dataset, instead of doing one shot estimations. Used only by: knn, decisionTree, svm, randomForest.
 - `REGRESSION`, if you want to perform a regression. Default is classification (no regression). Used only by: knn, decisionTree, svm, randomForest. TripleES performs only regression
 
 `ELM.h` exposes the following functions:
-- *`float* preprocess(float* X)`*, where X is the sample vector. The return is the pointer to the processed vector. Use that pointer for the classification / regression function.
-- *`int ( * pClassf)(float[] X_processed)`*, where X_processed is the sample vector. pClassf is a pointer to a the classification function of the selected algorithm. The return is value of the estimated class for the input.
-- *`float ( *pRegress)(float[] X_processed)`*, where X_processed is the sample vector. pRegress is a pointer to a the regression function of the selected algorithm.The return is estimated value for the input.
+- *`float* preprocess(float* X)`*, where X is the sample vector. It returns the pointer to the processed vector. Use that pointer for the classification / regression function.
+- *`int ( * pClassf)(float[] X_processed)`*, where X_processed is the sample vector. pClassf points to the classification function of the selected algorithm. It returns the value of the estimated class for the input.
+- *`float ( *pRegress)(float[] X_processed)`*, where X_processed is the sample vector. pRegress points to the regression function of the selected algorithm. It returns the estimated value for the given input.
 
 - *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
 
 `Test.h` exposes the following function:
-- *`void RunTest()`*, for the whole dataset testing. Algorithm is automatically selected using the previous configuration. This function prints the accuracy rate on Console.  Note: Preprocess is built in this function.
+- *`void RunTest()`*, for the whole dataset testing. The algorithm is automatically selected by setting the algorithm constant in `ELM.h` (see above). This function prints the accuracy rate on Console.  N.B. Preprocess is built in this function.
 
 ## Data type
 float 32 data are used
