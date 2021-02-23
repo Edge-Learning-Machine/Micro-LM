@@ -26,8 +26,8 @@ Configuration must be performed in `ELM.h`, where the user has to specify some `
 
 `ELM.h` exposes the following functions:
 - *`float* preprocess(float* X)`*, where X is the sample vector. It returns the pointer to the processed vector. Use that pointer for the classification / regression function.
-- *`int ( * pClassf)(float[] X_processed)`*, where X_processed is the sample vector. pClassf points to the classification function of the selected algorithm. It returns the value of the estimated class for the input.
-- *`float ( *pRegress)(float[] X_processed)`*, where X_processed is the sample vector. pRegress points to the regression function of the selected algorithm. It returns the estimated value for the given input.
+- *`int (*pClassf)(float[] X_processed)`*, where X_processed is the sample vector. pClassf points to the classification function of the selected algorithm. It returns the value of the estimated class for the input.
+- *`float (*pRegress)(float[] X_processed)`*, where X_processed is the sample vector. pRegress points to the regression function of the selected algorithm. It returns the estimated value for the given input.
 
 - *`HW_TripleExpoSmoothing(int arrayD[], int vlen, double alpha, double beta, double gamma,int slen, int n_preds, double scaling_factor)`*, for Holt-Winters time series
 
