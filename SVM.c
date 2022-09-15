@@ -42,21 +42,66 @@ int svm_classification(float X[])
     }
     else
     {
-        float bestDistance = -1000000;
-        for (m = 0; m < N_CLASS; m++)
-        {
-            float y = bias[m];
-            int k;
-            for (k = 0; k < N_FEATURE; k++)
-            {
-                y += support_vectors[m][k] * X[k];
-            }
-            if (y > bestDistance)
-            {
-                bestDistance = y;
-                return m;
-            }
-        }
+//         float bestDistance = -1000000;
+//         for (m = 0; m < N_CLASS; m++)
+//         {
+//             float y = bias[m];
+//             int k;
+//             for (k = 0; k < N_FEATURE; k++)
+//             {
+//                 y += support_vectors[m][k] * X[k];
+//             }
+//             if (y > bestDistance)
+//             {
+//                 bestDistance = y;
+//                 return m;
+//             }
+//         }
+	    float dot[N_VECTOR];
+	    int out[10];
+	    int prediction;
+	    for (int i = 0; i < N_VECTOR; i++)
+	    {
+		float distance = 0;
+		dot[i] = bias[i];
+		for (int k = 0; k < N_FEATURE; k++)
+		{
+		    dot[i] += X[k] * support_vectors[i][k];
+		}
+		if(dot[i] > 0)
+		{
+		    out[i] = 0;
+		}
+		else
+		{
+		    out[i] = 1; 
+		}
+	    }
+
+	    for(int i = 0; i < N_VECTOR; i++)
+	    {
+		out[i] = Truth_Table[out[i]][i];
+	    }
+
+	    // find the most frequent class
+	    int max_count = 0;
+	    for(int i = 0; i < N_CLASS; i++)
+	    {
+		int count = 0;
+		for(int j = 0; j < N_VECTOR; j++)
+		{
+		    if(out[j] == i)
+		    {
+			count++;
+		    }
+		}
+		if(count > max_count)
+		{
+		    max_count = count;
+		    prediction = i;
+		}
+	    }
+	    return prediction; 
     }
 }
 #endif
