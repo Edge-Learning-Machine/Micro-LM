@@ -57,10 +57,10 @@ int svm_classification(float X[])
 //                 return m;
 //             }
 //         }
-	    float dot[N_VECTOR];
-	    int out[10];
+	    float dot[WEIGTH_DIM];
+	    int out[WEIGTH_DIM];
 	    int prediction;
-	    for (int i = 0; i < N_VECTOR; i++)
+	    for (int i = 0; i < WEIGTH_DIM; i++)
 	    {
 		float distance = 0;
 		dot[i] = bias[i];
@@ -78,7 +78,7 @@ int svm_classification(float X[])
 		}
 	    }
 
-	    for(int i = 0; i < N_VECTOR; i++)
+	    for(int i = 0; i < WEIGTH_DIM; i++)
 	    {
 		out[i] = Truth_Table[out[i]][i];
 	    }
@@ -88,7 +88,7 @@ int svm_classification(float X[])
 	    for(int i = 0; i < N_CLASS; i++)
 	    {
 		int count = 0;
-		for(int j = 0; j < N_VECTOR; j++)
+		for(int j = 0; j < WEIGTH_DIM; j++)
 		{
 		    if(out[j] == i)
 		    {
